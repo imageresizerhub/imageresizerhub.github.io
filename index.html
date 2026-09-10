@@ -1,0 +1,3832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Free online image resizer and compressor. Resize images by pixels, percentage, CM, MM or inch, change DPI and compress to KB or MB."
+    >
+
+    <title>ImageResizer - Resize & Compress Images Online</title>
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f5f7fb;
+            color: #172033;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            width: 100%;
+
+            background: #ffffff;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 18px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+
+            color: #172033;
+
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        main {
+            width: 100%;
+            max-width: 1100px;
+
+            margin: 35px auto;
+
+            padding:
+                0 18px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            width: 100%;
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            margin:
+                0 0 12px;
+
+            font-size: 40px;
+
+            line-height: 1.15;
+
+            color: #111827;
+        }
+
+        .hero p {
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            color: #667085;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .card {
+            width: 100%;
+            max-width: 100%;
+
+            margin-bottom: 22px;
+
+            padding: 24px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(0, 0, 0, 0.06);
+
+            overflow: hidden;
+        }
+
+        .card h2 {
+            margin:
+                0 0 20px;
+
+            font-size: 23px;
+        }
+
+
+        /* =========================================
+           FILE INPUT
+        ========================================= */
+
+        #fileInput {
+            display: none;
+        }
+
+
+        /* =========================================
+           UPLOAD BOX
+        ========================================= */
+
+        .upload-box {
+            position: relative;
+
+            width: 100%;
+            max-width: 100%;
+
+            min-height: 260px;
+
+            padding:
+                35px 20px;
+
+            border:
+                2px dashed #b8bfd1;
+
+            border-radius: 16px;
+
+            background: #fbfcff;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+
+            user-select: none;
+
+            overflow: hidden;
+        }
+
+        .upload-box:hover {
+            border-color: #4f46e5;
+
+            background: #f8f7ff;
+        }
+
+        .upload-box.drag-over {
+            border-color: #4f46e5;
+
+            background: #efeeff;
+
+            transform:
+                scale(1.003);
+        }
+
+
+        /* =========================================
+           UPLOAD PLACEHOLDER
+        ========================================= */
+
+        #uploadPlaceholder {
+            width: 100%;
+
+            display: block;
+        }
+
+        .file-icon {
+            font-size: 52px;
+
+            line-height: 1;
+
+            margin-bottom: 14px;
+        }
+
+        .upload-box h2 {
+            margin:
+                0 0 8px;
+
+            font-size: 23px;
+
+            color: #111827;
+        }
+
+        .upload-box p {
+            max-width: 100%;
+
+            margin:
+                5px 0;
+
+            color: #667085;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            overflow-wrap:
+                anywhere;
+        }
+
+        .upload-button-text {
+            display: inline-block;
+
+            margin-top: 14px;
+
+            padding:
+                10px 17px;
+
+            background: #4f46e5;
+
+            color: #ffffff;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           UPLOADED IMAGE PREVIEW
+        ========================================= */
+
+        .uploaded-image-preview {
+            display: none;
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 760px;
+
+            height: 230px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            background: #f8f9fc;
+        }
+
+        .uploaded-image-preview img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            background: #ffffff;
+        }
+
+        .preview-overlay {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding:
+                11px;
+
+            background:
+                rgba(0, 0, 0, 0.65);
+
+            color: #ffffff;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            line-height: 1.4;
+        }
+
+        .upload-box.has-image {
+            padding: 14px;
+
+            min-height: 260px;
+        }
+
+
+        /* =========================================
+           SELECTED FILE
+        ========================================= */
+
+        .selected-file {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 14px;
+
+            padding:
+                12px 14px;
+
+            border-radius: 10px;
+
+            background: #f5f6fa;
+
+            color: #475467;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            overflow-wrap:
+                anywhere;
+        }
+
+
+        /* =========================================
+           CONTROLS
+        ========================================= */
+
+        .controls {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 18px;
+        }
+
+        .control-group {
+            width: 100%;
+
+            min-width: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .control-group.full {
+            grid-column:
+                1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #344054;
+        }
+
+
+        /* =========================================
+           INPUTS
+        ========================================= */
+
+        input[type="number"],
+        select {
+            width: 100%;
+
+            min-width: 0;
+
+            height: 46px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid #d0d5dd;
+
+            border-radius: 9px;
+
+            background: #ffffff;
+
+            color: #172033;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #4f46e5;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.10
+                );
+        }
+
+        .input-row {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                120px;
+
+            gap: 9px;
+        }
+
+
+        /* =========================================
+           RANGE
+        ========================================= */
+
+        input[type="range"] {
+            width: 100%;
+
+            accent-color: #4f46e5;
+
+            cursor: pointer;
+        }
+
+        .range-info {
+            color: #667085;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
+           CHECKBOX
+        ========================================= */
+
+        .checkbox-container {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            min-height: 42px;
+        }
+
+        .checkbox-container input {
+            width: 17px;
+            height: 17px;
+
+            margin: 0;
+
+            accent-color: #4f46e5;
+
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           INFO BOX
+        ========================================= */
+
+        .info-box {
+            margin-top: 18px;
+
+            padding:
+                14px 15px;
+
+            background: #f3f4ff;
+
+            border-radius: 10px;
+
+            color: #4546a8;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           ACTIONS
+        ========================================= */
+
+        .actions {
+            width: 100%;
+
+            margin-top: 22px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        button,
+        .download-button {
+            min-height: 46px;
+
+            padding:
+                12px 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+                transform 0.15s ease,
+                background 0.2s ease;
+        }
+
+        button:hover,
+        .download-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        .primary {
+            background: #4f46e5;
+
+            color: #ffffff;
+        }
+
+        .primary:hover {
+            background: #4338ca;
+        }
+
+        .secondary {
+            background: #eef0f4;
+
+            color: #172033;
+        }
+
+        .secondary:hover {
+            background: #e4e7ec;
+        }
+
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding:
+                13px 15px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .message.error {
+            background: #fff1f2;
+
+            color: #be123c;
+        }
+
+        .message.success {
+            background: #ecfdf3;
+
+            color: #047857;
+        }
+
+
+        /* =========================================
+           RESULT
+        ========================================= */
+
+        .result {
+            display: none;
+        }
+
+        .preview-grid {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .preview-box {
+            width: 100%;
+
+            min-width: 0;
+
+            padding: 15px;
+
+            background: #f8f9fc;
+
+            border-radius: 13px;
+
+            overflow: hidden;
+        }
+
+        .preview-box h3 {
+            margin:
+                0 0 13px;
+
+            font-size: 18px;
+        }
+
+        .preview-image {
+            display: block;
+
+            width: 100%;
+
+            height: 320px;
+
+            object-fit: contain;
+
+            border-radius: 9px;
+
+            background-color: #ffffff;
+
+            background-image:
+                linear-gradient(
+                    45deg,
+                    #e5e7eb 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    -45deg,
+                    #e5e7eb 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    45deg,
+                    transparent 75%,
+                    #e5e7eb 75%
+                ),
+                linear-gradient(
+                    -45deg,
+                    transparent 75%,
+                    #e5e7eb 75%
+                );
+
+            background-size:
+                20px 20px;
+
+            background-position:
+                0 0,
+                0 10px,
+                10px -10px,
+                -10px 0;
+        }
+
+        .stats {
+            margin-top: 13px;
+
+            color: #475467;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            overflow-wrap:
+                anywhere;
+        }
+
+        .download-area {
+            margin-top: 20px;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            width: 100%;
+
+            padding:
+                30px 18px
+                40px;
+
+            text-align: center;
+
+            color: #667085;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .controls {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .control-group.full {
+                grid-column: auto;
+            }
+
+            .preview-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .header-inner {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            main {
+                margin:
+                    22px auto;
+
+                padding:
+                    0 12px;
+            }
+
+            .hero {
+                margin-bottom: 22px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 16px;
+
+                border-radius: 14px;
+            }
+
+            .upload-box {
+                min-height: 225px;
+
+                padding:
+                    28px 12px;
+            }
+
+            .upload-box.has-image {
+                min-height: 225px;
+
+                padding: 10px;
+            }
+
+            .upload-box h2 {
+                font-size: 20px;
+            }
+
+            .upload-box p {
+                font-size: 13px;
+            }
+
+            .uploaded-image-preview {
+                height: 200px;
+            }
+
+            .preview-image {
+                height: 270px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            button,
+            .download-button {
+                width: 100%;
+            }
+
+        }
+
+
+        /* =========================================
+           EXTRA SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .input-row {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .upload-box {
+                min-height: 210px;
+            }
+
+            .upload-box.has-image {
+                min-height: 210px;
+            }
+
+            .uploaded-image-preview {
+                height: 180px;
+            }
+
+            .file-icon {
+                font-size: 42px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header>
+
+        <div class="header-inner">
+
+            <div class="logo">
+                <span>Image</span>Resizer
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section class="hero">
+
+            <h1>
+                Resize & Compress Image Online
+            </h1>
+
+            <p>
+                Change dimensions, DPI and file size.
+                Export your image as JPEG.
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             UPLOAD CARD
+        ====================================== -->
+
+        <div class="card">
+
+
+            <!-- HIDDEN FILE INPUT -->
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/*"
+            >
+
+
+            <!-- UPLOAD / DROP AREA -->
+
+            <label
+                for="fileInput"
+                class="upload-box"
+                id="uploadBox"
+            >
+
+
+                <!-- BEFORE IMAGE SELECTED -->
+
+                <div
+                    id="uploadPlaceholder"
+                >
+
+                    <div class="file-icon">
+                        🖼️
+                    </div>
+
+                    <h2>
+                        Upload Your Image
+                    </h2>
+
+                    <p>
+                        Click here or drag & drop your image
+                    </p>
+
+                    <p>
+                        JPG, PNG, WEBP, GIF, BMP and other
+                        browser-supported image formats
+                    </p>
+
+                    <span
+                        class="upload-button-text"
+                    >
+                        Choose Image
+                    </span>
+
+                </div>
+
+
+
+                <!-- AFTER IMAGE SELECTED -->
+
+                <div
+                    id="uploadedImagePreview"
+                    class="uploaded-image-preview"
+                >
+
+                    <img
+                        id="uploadPreviewImage"
+                        src=""
+                        alt="Selected image preview"
+                    >
+
+                    <div
+                        class="preview-overlay"
+                    >
+                        Click or drop another image to replace
+                    </div>
+
+                </div>
+
+
+            </label>
+
+
+
+            <!-- FILE INFORMATION -->
+
+            <div
+                class="selected-file"
+                id="selectedFile"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             EDITOR
+        ====================================== -->
+
+        <div
+            class="card"
+            id="editor"
+            style="display:none;"
+        >
+
+            <h2>
+                Resize Settings
+            </h2>
+
+
+            <div class="controls">
+
+
+                <!-- WIDTH -->
+
+                <div class="control-group">
+
+                    <label for="width">
+                        Width
+                    </label>
+
+                    <div class="input-row">
+
+                        <input
+                            type="number"
+                            id="width"
+                            min="1"
+                            step="1"
+                        >
+
+                        <select
+                            id="widthUnit"
+                        >
+
+                            <option value="px">
+                                Pixels
+                            </option>
+
+                            <option value="percent">
+                                Percent %
+                            </option>
+
+                            <option value="cm">
+                                Centimeters
+                            </option>
+
+                            <option value="mm">
+                                Millimeters
+                            </option>
+
+                            <option value="in">
+                                Inch
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HEIGHT -->
+
+                <div class="control-group">
+
+                    <label for="height">
+                        Height
+                    </label>
+
+                    <div class="input-row">
+
+                        <input
+                            type="number"
+                            id="height"
+                            min="1"
+                            step="1"
+                        >
+
+                        <select
+                            id="heightUnit"
+                        >
+
+                            <option value="px">
+                                Pixels
+                            </option>
+
+                            <option value="percent">
+                                Percent %
+                            </option>
+
+                            <option value="cm">
+                                Centimeters
+                            </option>
+
+                            <option value="mm">
+                                Millimeters
+                            </option>
+
+                            <option value="in">
+                                Inch
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ASPECT RATIO -->
+
+                <div class="control-group full">
+
+                    <div
+                        class="checkbox-container"
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="lockRatio"
+                            checked
+                        >
+
+                        <label
+                            for="lockRatio"
+                        >
+                            Lock aspect ratio
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DPI -->
+
+                <div class="control-group">
+
+                    <label for="dpi">
+                        DPI
+                    </label>
+
+                    <input
+                        type="number"
+                        id="dpi"
+                        value="96"
+                        min="1"
+                        max="2400"
+                        step="1"
+                    >
+
+                    <div class="range-info">
+                        Recommended:
+                        72, 96, 150 or 300 DPI
+                    </div>
+
+                </div>
+
+
+
+                <!-- TARGET SIZE -->
+
+                <div class="control-group">
+
+                    <label for="targetSize">
+                        Target File Size
+                    </label>
+
+                    <div class="input-row">
+
+                        <input
+                            type="number"
+                            id="targetSize"
+                            min="1"
+                            step="0.01"
+                            placeholder="Optional"
+                        >
+
+                        <select
+                            id="sizeUnit"
+                        >
+
+                            <option value="KB">
+                                KB
+                            </option>
+
+                            <option value="MB">
+                                MB
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="range-info">
+                        Leave empty to use JPEG quality.
+                    </div>
+
+                </div>
+
+
+
+                <!-- JPEG QUALITY -->
+
+                <div class="control-group">
+
+                    <label for="quality">
+                        JPEG Quality
+                    </label>
+
+                    <input
+                        type="range"
+                        id="quality"
+                        min="10"
+                        max="100"
+                        value="90"
+                    >
+
+                    <div
+                        class="range-info"
+                        id="qualityValue"
+                    >
+                        90%
+                    </div>
+
+                </div>
+
+
+
+                <!-- OUTPUT FORMAT -->
+
+                <div class="control-group">
+
+                    <label>
+                        Output Format
+                    </label>
+
+                    <select disabled>
+
+                        <option>
+                            JPEG (.jpg)
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFORMATION -->
+
+            <div class="info-box">
+
+                <strong>
+                    How units work:
+                </strong>
+
+                <br>
+
+                Pixels =
+                direct pixel dimensions.
+
+                <br>
+
+                Percent =
+                percentage of the original image.
+
+                <br>
+
+                CM / MM / Inch =
+                converted to pixels using the selected DPI.
+
+                <br>
+
+                The final image is exported as JPEG.
+
+                <br>
+
+                Target file size automatically adjusts
+                JPEG quality to get as close as possible
+                to the requested size.
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="actions">
+
+                <button
+                    class="primary"
+                    id="resizeButton"
+                    type="button"
+                >
+                    Resize Image
+                </button>
+
+                <button
+                    class="secondary"
+                    id="resetButton"
+                    type="button"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                class="message"
+                id="message"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             RESULT
+        ====================================== -->
+
+        <div
+            class="card result"
+            id="result"
+        >
+
+            <h2>
+                Result
+            </h2>
+
+
+            <div class="preview-grid">
+
+
+                <!-- ORIGINAL IMAGE -->
+
+                <div class="preview-box">
+
+                    <h3>
+                        Original Image
+                    </h3>
+
+                    <img
+                        id="originalPreview"
+                        class="preview-image"
+                        alt="Original image preview"
+                    >
+
+                    <div
+                        class="stats"
+                        id="originalStats"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- RESIZED IMAGE -->
+
+                <div class="preview-box">
+
+                    <h3>
+                        Resized JPEG
+                    </h3>
+
+                    <img
+                        id="resultPreview"
+                        class="preview-image"
+                        alt="Resized image preview"
+                    >
+
+                    <div
+                        class="stats"
+                        id="resultStats"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DOWNLOAD -->
+
+            <div class="download-area">
+
+                <a
+                    id="downloadBtn"
+                    class="download-button primary"
+                    download="resized-image.jpg"
+                >
+                    ⬇️ Download JPEG
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        ImageResizer —
+        Free Online Image Resizing Tool
+
+    </footer>
+
+
+
+    <script>
+
+
+        /* =========================================
+           GLOBAL VARIABLES
+        ========================================= */
+
+        let originalFile = null;
+
+        let originalImage = null;
+
+        let originalWidth = 0;
+
+        let originalHeight = 0;
+
+        let uploadPreviewUrl = null;
+
+        let resultObjectUrl = null;
+
+
+
+        /* =========================================
+           ELEMENTS
+        ========================================= */
+
+        const fileInput =
+            document.getElementById(
+                "fileInput"
+            );
+
+        const uploadBox =
+            document.getElementById(
+                "uploadBox"
+            );
+
+        const uploadPlaceholder =
+            document.getElementById(
+                "uploadPlaceholder"
+            );
+
+        const uploadedImagePreview =
+            document.getElementById(
+                "uploadedImagePreview"
+            );
+
+        const uploadPreviewImage =
+            document.getElementById(
+                "uploadPreviewImage"
+            );
+
+        const selectedFile =
+            document.getElementById(
+                "selectedFile"
+            );
+
+        const editor =
+            document.getElementById(
+                "editor"
+            );
+
+        const result =
+            document.getElementById(
+                "result"
+            );
+
+        const widthInput =
+            document.getElementById(
+                "width"
+            );
+
+        const heightInput =
+            document.getElementById(
+                "height"
+            );
+
+        const widthUnit =
+            document.getElementById(
+                "widthUnit"
+            );
+
+        const heightUnit =
+            document.getElementById(
+                "heightUnit"
+            );
+
+        const lockRatio =
+            document.getElementById(
+                "lockRatio"
+            );
+
+        const dpiInput =
+            document.getElementById(
+                "dpi"
+            );
+
+        const targetSizeInput =
+            document.getElementById(
+                "targetSize"
+            );
+
+        const sizeUnit =
+            document.getElementById(
+                "sizeUnit"
+            );
+
+        const qualityInput =
+            document.getElementById(
+                "quality"
+            );
+
+        const qualityValue =
+            document.getElementById(
+                "qualityValue"
+            );
+
+        const resizeButton =
+            document.getElementById(
+                "resizeButton"
+            );
+
+        const resetButton =
+            document.getElementById(
+                "resetButton"
+            );
+
+        const messageBox =
+            document.getElementById(
+                "message"
+            );
+
+        const originalPreview =
+            document.getElementById(
+                "originalPreview"
+            );
+
+        const resultPreview =
+            document.getElementById(
+                "resultPreview"
+            );
+
+        const originalStats =
+            document.getElementById(
+                "originalStats"
+            );
+
+        const resultStats =
+            document.getElementById(
+                "resultStats"
+            );
+
+        const downloadBtn =
+            document.getElementById(
+                "downloadBtn"
+            );
+
+
+
+        /* =========================================
+           QUALITY DISPLAY
+        ========================================= */
+
+        qualityInput.addEventListener(
+            "input",
+            function () {
+
+                qualityValue.textContent =
+                    qualityInput.value +
+                    "%";
+
+            }
+        );
+
+
+
+        /* =========================================
+           FILE INPUT
+        ========================================= */
+
+        fileInput.addEventListener(
+            "change",
+            function (event) {
+
+                const file =
+                    event.target.files &&
+                    event.target.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                loadImageFile(file);
+
+            }
+        );
+
+
+
+        /* =========================================
+           DRAG ENTER
+        ========================================= */
+
+        uploadBox.addEventListener(
+            "dragenter",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                uploadBox.classList.add(
+                    "drag-over"
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           DRAG OVER
+        ========================================= */
+
+        uploadBox.addEventListener(
+            "dragover",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                uploadBox.classList.add(
+                    "drag-over"
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           DRAG LEAVE
+        ========================================= */
+
+        uploadBox.addEventListener(
+            "dragleave",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                /*
+                    Only remove the highlight when
+                    the pointer actually leaves the
+                    upload box.
+                */
+
+                const rect =
+                    uploadBox.getBoundingClientRect();
+
+                const x =
+                    event.clientX;
+
+                const y =
+                    event.clientY;
+
+                const outside =
+                    x < rect.left ||
+                    x > rect.right ||
+                    y < rect.top ||
+                    y > rect.bottom;
+
+                if (outside) {
+
+                    uploadBox.classList.remove(
+                        "drag-over"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           DROP
+        ========================================= */
+
+        uploadBox.addEventListener(
+            "drop",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                uploadBox.classList.remove(
+                    "drag-over"
+                );
+
+                const files =
+                    event.dataTransfer &&
+                    event.dataTransfer.files;
+
+                if (
+                    !files ||
+                    files.length === 0
+                ) {
+                    return;
+                }
+
+                loadImageFile(
+                    files[0]
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           LOAD IMAGE FILE
+        ========================================= */
+
+        function loadImageFile(file) {
+
+            if (
+                !file ||
+                !file.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                showMessage(
+                    "Please select a valid image file.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+                Cancel old preview URL.
+            */
+
+            if (uploadPreviewUrl) {
+
+                URL.revokeObjectURL(
+                    uploadPreviewUrl
+                );
+
+                uploadPreviewUrl =
+                    null;
+
+            }
+
+
+            /*
+                Cancel old result URL.
+            */
+
+            if (resultObjectUrl) {
+
+                URL.revokeObjectURL(
+                    resultObjectUrl
+                );
+
+                resultObjectUrl =
+                    null;
+
+            }
+
+
+            originalFile =
+                file;
+
+
+            uploadPreviewUrl =
+                URL.createObjectURL(
+                    file
+                );
+
+
+            /*
+                Show selected image
+                INSIDE the upload box.
+            */
+
+            uploadPreviewImage.src =
+                uploadPreviewUrl;
+
+            uploadedImagePreview.style.display =
+                "block";
+
+            uploadPlaceholder.style.display =
+                "none";
+
+            uploadBox.classList.add(
+                "has-image"
+            );
+
+
+            /*
+                Hide old result.
+            */
+
+            result.style.display =
+                "none";
+
+
+            /*
+                Load image into JavaScript
+                for processing.
+            */
+
+            const image =
+                new Image();
+
+
+            image.onload =
+                function () {
+
+                    originalImage =
+                        image;
+
+
+                    originalWidth =
+                        image.naturalWidth;
+
+
+                    originalHeight =
+                        image.naturalHeight;
+
+
+                    /*
+                        Set default dimensions.
+                    */
+
+                    widthInput.value =
+                        originalWidth;
+
+
+                    heightInput.value =
+                        originalHeight;
+
+
+                    widthUnit.value =
+                        "px";
+
+
+                    heightUnit.value =
+                        "px";
+
+
+                    /*
+                        Show editor.
+                    */
+
+                    editor.style.display =
+                        "block";
+
+
+                    /*
+                        Original result preview.
+                    */
+
+                    originalPreview.src =
+                        uploadPreviewUrl;
+
+
+                    /*
+                        File details.
+                    */
+
+                    selectedFile.style.display =
+                        "block";
+
+
+                    selectedFile.innerHTML =
+                        `
+                        <strong>Selected:</strong>
+                        ${escapeHtml(file.name)}
+
+                        <br>
+
+                        <strong>Size:</strong>
+                        ${formatBytes(file.size)}
+
+                        <br>
+
+                        <strong>Dimensions:</strong>
+                        ${originalWidth}
+                        ×
+                        ${originalHeight}px
+                        `;
+
+
+                    originalStats.innerHTML =
+                        `
+                        <strong>Dimensions:</strong>
+                        ${originalWidth}
+                        ×
+                        ${originalHeight}px
+
+                        <br>
+
+                        <strong>File size:</strong>
+                        ${formatBytes(file.size)}
+
+                        <br>
+
+                        <strong>Type:</strong>
+                        ${escapeHtml(
+                            file.type ||
+                            "Unknown"
+                        )}
+                        `;
+
+
+                    clearMessage();
+
+                };
+
+
+            image.onerror =
+                function () {
+
+                    resetUploadPreview();
+
+                    showMessage(
+                        "This image could not be opened by your browser.",
+                        "error"
+                    );
+
+                };
+
+
+            image.src =
+                uploadPreviewUrl;
+
+        }
+
+
+
+        /* =========================================
+           RESET UPLOAD PREVIEW
+        ========================================= */
+
+        function resetUploadPreview() {
+
+            if (uploadPreviewUrl) {
+
+                URL.revokeObjectURL(
+                    uploadPreviewUrl
+                );
+
+                uploadPreviewUrl =
+                    null;
+
+            }
+
+
+            uploadPreviewImage.src =
+                "";
+
+
+            uploadedImagePreview.style.display =
+                "none";
+
+
+            uploadPlaceholder.style.display =
+                "block";
+
+
+            uploadBox.classList.remove(
+                "has-image"
+            );
+
+        }
+
+
+
+        /* =========================================
+           ASPECT RATIO
+        ========================================= */
+
+        let changingWidth = false;
+
+        let changingHeight = false;
+
+
+        widthInput.addEventListener(
+            "input",
+            function () {
+
+                if (
+                    !lockRatio.checked ||
+                    !originalImage ||
+                    changingHeight
+                ) {
+
+                    return;
+
+                }
+
+
+                const widthPixels =
+                    inputValueToPixels(
+                        widthInput.value,
+                        widthUnit.value,
+                        dpiInput.value,
+                        "width"
+                    );
+
+
+                if (
+                    !Number.isFinite(
+                        widthPixels
+                    ) ||
+                    widthPixels <= 0
+                ) {
+
+                    return;
+
+                }
+
+
+                const ratio =
+                    originalHeight /
+                    originalWidth;
+
+
+                const newHeightPixels =
+                    widthPixels *
+                    ratio;
+
+
+                changingWidth =
+                    true;
+
+
+                heightInput.value =
+                    pixelsToInputValue(
+                        newHeightPixels,
+                        heightUnit.value,
+                        dpiInput.value,
+                        "height"
+                    );
+
+
+                changingWidth =
+                    false;
+
+            }
+        );
+
+
+
+        heightInput.addEventListener(
+            "input",
+            function () {
+
+                if (
+                    !lockRatio.checked ||
+                    !originalImage ||
+                    changingWidth
+                ) {
+
+                    return;
+
+                }
+
+
+                const heightPixels =
+                    inputValueToPixels(
+                        heightInput.value,
+                        heightUnit.value,
+                        dpiInput.value,
+                        "height"
+                    );
+
+
+                if (
+                    !Number.isFinite(
+                        heightPixels
+                    ) ||
+                    heightPixels <= 0
+                ) {
+
+                    return;
+
+                }
+
+
+                const ratio =
+                    originalWidth /
+                    originalHeight;
+
+
+                const newWidthPixels =
+                    heightPixels *
+                    ratio;
+
+
+                changingHeight =
+                    true;
+
+
+                widthInput.value =
+                    pixelsToInputValue(
+                        newWidthPixels,
+                        widthUnit.value,
+                        dpiInput.value,
+                        "width"
+                    );
+
+
+                changingHeight =
+                    false;
+
+            }
+        );
+
+
+
+        /* =========================================
+           UNIT CONVERSION
+        ========================================= */
+
+        function inputValueToPixels(
+            value,
+            unit,
+            dpi,
+            dimension
+        ) {
+
+            const number =
+                Number(value);
+
+
+            const dpiNumber =
+                Number(dpi);
+
+
+            if (
+                !Number.isFinite(number) ||
+                number <= 0
+            ) {
+
+                return null;
+
+            }
+
+
+            if (
+                !Number.isFinite(dpiNumber) ||
+                dpiNumber <= 0
+            ) {
+
+                return null;
+
+            }
+
+
+            if (unit === "px") {
+
+                return number;
+
+            }
+
+
+            if (unit === "percent") {
+
+                if (
+                    dimension === "width"
+                ) {
+
+                    return (
+                        originalWidth *
+                        number /
+                        100
+                    );
+
+                }
+
+
+                return (
+                    originalHeight *
+                    number /
+                    100
+                );
+
+            }
+
+
+            if (unit === "in") {
+
+                return (
+                    number *
+                    dpiNumber
+                );
+
+            }
+
+
+            if (unit === "cm") {
+
+                return (
+                    number /
+                    2.54 *
+                    dpiNumber
+                );
+
+            }
+
+
+            if (unit === "mm") {
+
+                return (
+                    number /
+                    25.4 *
+                    dpiNumber
+                );
+
+            }
+
+
+            return number;
+
+        }
+
+
+
+        function pixelsToInputValue(
+            pixels,
+            unit,
+            dpi,
+            dimension
+        ) {
+
+            const dpiNumber =
+                Number(dpi);
+
+
+            if (
+                !Number.isFinite(pixels) ||
+                pixels <= 0
+            ) {
+
+                return "";
+
+            }
+
+
+            if (
+                !Number.isFinite(dpiNumber) ||
+                dpiNumber <= 0
+            ) {
+
+                return "";
+
+            }
+
+
+            if (unit === "px") {
+
+                return Math.round(
+                    pixels
+                );
+
+            }
+
+
+            if (unit === "percent") {
+
+                const original =
+                    dimension === "width"
+                        ? originalWidth
+                        : originalHeight;
+
+
+                return Number(
+                    (
+                        pixels /
+                        original *
+                        100
+                    ).toFixed(2)
+                );
+
+            }
+
+
+            if (unit === "in") {
+
+                return Number(
+                    (
+                        pixels /
+                        dpiNumber
+                    ).toFixed(2)
+                );
+
+            }
+
+
+            if (unit === "cm") {
+
+                return Number(
+                    (
+                        pixels /
+                        dpiNumber *
+                        2.54
+                    ).toFixed(2)
+                );
+
+            }
+
+
+            if (unit === "mm") {
+
+                return Number(
+                    (
+                        pixels /
+                        dpiNumber *
+                        25.4
+                    ).toFixed(2)
+                );
+
+            }
+
+
+            return Math.round(
+                pixels
+            );
+
+        }
+
+
+
+        /* =========================================
+           GET FINAL DIMENSIONS
+        ========================================= */
+
+        function getFinalDimensions() {
+
+            const dpi =
+                Number(
+                    dpiInput.value
+                );
+
+
+            if (
+                !Number.isFinite(dpi) ||
+                dpi <= 0
+            ) {
+
+                throw new Error(
+                    "Please enter a valid DPI."
+                );
+
+            }
+
+
+            const width =
+                inputValueToPixels(
+                    widthInput.value,
+                    widthUnit.value,
+                    dpi,
+                    "width"
+                );
+
+
+            const height =
+                inputValueToPixels(
+                    heightInput.value,
+                    heightUnit.value,
+                    dpi,
+                    "height"
+                );
+
+
+            if (
+                !Number.isFinite(width) ||
+                !Number.isFinite(height) ||
+                width <= 0 ||
+                height <= 0
+            ) {
+
+                throw new Error(
+                    "Please enter valid width and height."
+                );
+
+            }
+
+
+            return {
+
+                width:
+                    Math.max(
+                        1,
+                        Math.round(width)
+                    ),
+
+                height:
+                    Math.max(
+                        1,
+                        Math.round(height)
+                    )
+
+            };
+
+        }
+
+
+
+        /* =========================================
+           TARGET FILE SIZE
+        ========================================= */
+
+        function getTargetBytes() {
+
+            const value =
+                Number(
+                    targetSizeInput.value
+                );
+
+
+            if (
+                !Number.isFinite(value) ||
+                value <= 0
+            ) {
+
+                return null;
+
+            }
+
+
+            if (
+                sizeUnit.value ===
+                "KB"
+            ) {
+
+                return (
+                    value *
+                    1024
+                );
+
+            }
+
+
+            if (
+                sizeUnit.value ===
+                "MB"
+            ) {
+
+                return (
+                    value *
+                    1024 *
+                    1024
+                );
+
+            }
+
+
+            return null;
+
+        }
+
+
+
+        /* =========================================
+           RESIZE IMAGE
+        ========================================= */
+
+        resizeButton.addEventListener(
+            "click",
+            async function () {
+
+                if (!originalImage) {
+
+                    showMessage(
+                        "Please upload an image first.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+                    clearMessage();
+
+
+                    resizeButton.disabled =
+                        true;
+
+
+                    resizeButton.textContent =
+                        "Processing...";
+
+
+                    const dimensions =
+                        getFinalDimensions();
+
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
+
+
+                    canvas.width =
+                        dimensions.width;
+
+
+                    canvas.height =
+                        dimensions.height;
+
+
+                    const context =
+                        canvas.getContext(
+                            "2d",
+                            {
+                                alpha: false
+                            }
+                        );
+
+
+                    /*
+                        White background for
+                        transparent images.
+                    */
+
+                    context.fillStyle =
+                        "#ffffff";
+
+
+                    context.fillRect(
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+
+
+                    /*
+                        High-quality image smoothing.
+                    */
+
+                    context.imageSmoothingEnabled =
+                        true;
+
+
+                    context.imageSmoothingQuality =
+                        "high";
+
+
+                    /*
+                        Draw image.
+                    */
+
+                    context.drawImage(
+                        originalImage,
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+
+
+                    const targetBytes =
+                        getTargetBytes();
+
+
+                    let blob;
+
+
+                    if (targetBytes) {
+
+                        blob =
+                            await findBlobNearTarget(
+                                canvas,
+                                targetBytes
+                            );
+
+                    } else {
+
+                        const quality =
+                            Number(
+                                qualityInput.value
+                            ) / 100;
+
+
+                        blob =
+                            await canvasToJpegBlob(
+                                canvas,
+                                quality
+                            );
+
+                    }
+
+
+                    /*
+                        Add DPI metadata.
+                    */
+
+                    blob =
+                        await setJpegDpi(
+                            blob,
+                            Number(
+                                dpiInput.value
+                            )
+                        );
+
+
+                    showResult(
+                        blob,
+                        dimensions
+                    );
+
+
+                    showMessage(
+                        "Image resized successfully.",
+                        "success"
+                    );
+
+                }
+                catch (error) {
+
+                    console.error(error);
+
+
+                    showMessage(
+                        error.message ||
+                        "Something went wrong while processing the image.",
+                        "error"
+                    );
+
+                }
+                finally {
+
+                    resizeButton.disabled =
+                        false;
+
+
+                    resizeButton.textContent =
+                        "Resize Image";
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           CANVAS TO JPEG
+        ========================================= */
+
+        function canvasToJpegBlob(
+            canvas,
+            quality
+        ) {
+
+            return new Promise(
+                function (
+                    resolve,
+                    reject
+                ) {
+
+                    canvas.toBlob(
+                        function (blob) {
+
+                            if (!blob) {
+
+                                reject(
+                                    new Error(
+                                        "Your browser could not create the JPEG."
+                                    )
+                                );
+
+                                return;
+
+                            }
+
+
+                            resolve(blob);
+
+                        },
+
+                        "image/jpeg",
+
+                        quality
+
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================================
+           FIND JPEG CLOSE TO TARGET SIZE
+        ========================================= */
+
+        async function findBlobNearTarget(
+            canvas,
+            targetBytes
+        ) {
+
+            let low =
+                0.05;
+
+
+            let high =
+                0.98;
+
+
+            let bestBlob =
+                null;
+
+
+            let bestDifference =
+                Infinity;
+
+
+            /*
+                Binary search.
+            */
+
+            for (
+                let i = 0;
+                i < 14;
+                i++
+            ) {
+
+                const quality =
+                    (
+                        low +
+                        high
+                    ) / 2;
+
+
+                const blob =
+                    await canvasToJpegBlob(
+                        canvas,
+                        quality
+                    );
+
+
+                const difference =
+                    Math.abs(
+                        blob.size -
+                        targetBytes
+                    );
+
+
+                if (
+                    difference <
+                    bestDifference
+                ) {
+
+                    bestDifference =
+                        difference;
+
+
+                    bestBlob =
+                        blob;
+
+                }
+
+
+                if (
+                    blob.size >
+                    targetBytes
+                ) {
+
+                    high =
+                        quality;
+
+                }
+                else {
+
+                    low =
+                        quality;
+
+                }
+
+            }
+
+
+            /*
+                Check minimum quality.
+            */
+
+            const minBlob =
+                await canvasToJpegBlob(
+                    canvas,
+                    0.05
+                );
+
+
+            if (
+                Math.abs(
+                    minBlob.size -
+                    targetBytes
+                ) <
+                bestDifference
+            ) {
+
+                bestBlob =
+                    minBlob;
+
+            }
+
+
+            /*
+                Check maximum quality.
+            */
+
+            const maxBlob =
+                await canvasToJpegBlob(
+                    canvas,
+                    0.98
+                );
+
+
+            if (
+                Math.abs(
+                    maxBlob.size -
+                    targetBytes
+                ) <
+                bestDifference
+            ) {
+
+                bestBlob =
+                    maxBlob;
+
+            }
+
+
+            return bestBlob;
+
+        }
+
+
+
+        /* =========================================
+           SET JPEG DPI
+        ========================================= */
+
+        async function setJpegDpi(
+            blob,
+            dpi
+        ) {
+
+            const buffer =
+                await blob.arrayBuffer();
+
+
+            const bytes =
+                new Uint8Array(
+                    buffer
+                );
+
+
+            /*
+                JPEG starts with FF D8.
+            */
+
+            if (
+                bytes.length < 20 ||
+                bytes[0] !== 0xFF ||
+                bytes[1] !== 0xD8
+            ) {
+
+                return blob;
+
+            }
+
+
+            let offset =
+                2;
+
+
+            while (
+                offset + 4 <
+                bytes.length
+            ) {
+
+                if (
+                    bytes[offset] !== 0xFF
+                ) {
+
+                    break;
+
+                }
+
+
+                const marker =
+                    bytes[
+                        offset + 1
+                    ];
+
+
+                /*
+                    APP0 JFIF
+                */
+
+                if (
+                    marker === 0xE0 &&
+                    offset + 14 <
+                    bytes.length
+                ) {
+
+                    const segmentLength =
+                        (
+                            bytes[
+                                offset + 2
+                            ] << 8
+                        ) |
+                        bytes[
+                            offset + 3
+                        ];
+
+
+                    /*
+                        Check JFIF identifier.
+                    */
+
+                    if (
+                        bytes[
+                            offset + 4
+                        ] === 0x4A &&
+
+                        bytes[
+                            offset + 5
+                        ] === 0x46 &&
+
+                        bytes[
+                            offset + 6
+                        ] === 0x49 &&
+
+                        bytes[
+                            offset + 7
+                        ] === 0x46 &&
+
+                        bytes[
+                            offset + 8
+                        ] === 0x00
+                    ) {
+
+                        /*
+                            Unit:
+                            1 = DPI
+                        */
+
+                        bytes[
+                            offset + 9
+                        ] = 0x01;
+
+
+                        const dpiValue =
+                            Math.max(
+                                1,
+                                Math.min(
+                                    65535,
+                                    Math.round(dpi)
+                                )
+                            );
+
+
+                        /*
+                            X density.
+                        */
+
+                        bytes[
+                            offset + 10
+                        ] =
+                            (
+                                dpiValue >>
+                                8
+                            ) & 0xFF;
+
+
+                        bytes[
+                            offset + 11
+                        ] =
+                            dpiValue &
+                            0xFF;
+
+
+                        /*
+                            Y density.
+                        */
+
+                        bytes[
+                            offset + 12
+                        ] =
+                            (
+                                dpiValue >>
+                                8
+                            ) & 0xFF;
+
+
+                        bytes[
+                            offset + 13
+                        ] =
+                            dpiValue &
+                            0xFF;
+
+
+                        return new Blob(
+                            [bytes],
+                            {
+                                type:
+                                    "image/jpeg"
+                            }
+                        );
+
+                    }
+
+
+                    offset +=
+                        2 +
+                        segmentLength;
+
+
+                    continue;
+
+                }
+
+
+                /*
+                    Start of Scan.
+                */
+
+                if (
+                    marker === 0xDA
+                ) {
+
+                    break;
+
+                }
+
+
+                /*
+                    Markers without
+                    segment lengths.
+                */
+
+                if (
+                    marker === 0xD8 ||
+                    marker === 0xD9 ||
+                    (
+                        marker >= 0xD0 &&
+                        marker <= 0xD7
+                    )
+                ) {
+
+                    offset += 2;
+
+                    continue;
+
+                }
+
+
+                if (
+                    offset + 4 >
+                    bytes.length
+                ) {
+
+                    break;
+
+                }
+
+
+                const length =
+                    (
+                        bytes[
+                            offset + 2
+                        ] << 8
+                    ) |
+                    bytes[
+                        offset + 3
+                    ];
+
+
+                if (
+                    length < 2
+                ) {
+
+                    break;
+
+                }
+
+
+                offset +=
+                    2 +
+                    length;
+
+            }
+
+
+            /*
+                If no JFIF segment
+                is found, return
+                the original JPEG.
+            */
+
+            return blob;
+
+        }
+
+
+
+        /* =========================================
+           SHOW RESULT
+        ========================================= */
+
+        function showResult(
+            blob,
+            dimensions
+        ) {
+
+            /*
+                Remove previous result URL.
+            */
+
+            if (resultObjectUrl) {
+
+                URL.revokeObjectURL(
+                    resultObjectUrl
+                );
+
+            }
+
+
+            resultObjectUrl =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            resultPreview.src =
+                resultObjectUrl;
+
+
+            result.style.display =
+                "block";
+
+
+            /*
+                Target information.
+            */
+
+            const targetBytes =
+                getTargetBytes();
+
+
+            let targetText =
+                "";
+
+
+            if (targetBytes) {
+
+                const difference =
+                    blob.size -
+                    targetBytes;
+
+
+                const percentage =
+                    (
+                        Math.abs(
+                            difference
+                        ) /
+                        targetBytes *
+                        100
+                    );
+
+
+                targetText =
+                    `
+                    <br>
+
+                    <strong>Target:</strong>
+                    ${formatBytes(targetBytes)}
+
+                    <br>
+
+                    <strong>Difference:</strong>
+                    ${formatBytes(
+                        Math.abs(
+                            difference
+                        )
+                    )}
+                    (${percentage.toFixed(1)}%)
+                    `;
+
+            }
+
+
+            resultStats.innerHTML =
+                `
+                <strong>Dimensions:</strong>
+                ${dimensions.width}
+                ×
+                ${dimensions.height}px
+
+                <br>
+
+                <strong>Physical size:</strong>
+                ${formatPhysicalSize(
+                    dimensions.width,
+                    dimensions.height,
+                    Number(dpiInput.value)
+                )}
+
+                <br>
+
+                <strong>File size:</strong>
+                ${formatBytes(blob.size)}
+
+                ${targetText}
+
+                <br>
+
+                <strong>Format:</strong>
+                JPEG
+
+                <br>
+
+                <strong>DPI:</strong>
+                ${Number(
+                    dpiInput.value
+                )}
+                `;
+
+
+            /*
+                Download link.
+            */
+
+            downloadBtn.href =
+                resultObjectUrl;
+
+
+            downloadBtn.download =
+                createDownloadName();
+
+
+            /*
+                Scroll to result.
+            */
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+
+        /* =========================================
+           PHYSICAL SIZE
+        ========================================= */
+
+        function formatPhysicalSize(
+            width,
+            height,
+            dpi
+        ) {
+
+            if (
+                !Number.isFinite(dpi) ||
+                dpi <= 0
+            ) {
+
+                return "N/A";
+
+            }
+
+
+            const widthInch =
+                width /
+                dpi;
+
+
+            const heightInch =
+                height /
+                dpi;
+
+
+            const widthCm =
+                widthInch *
+                2.54;
+
+
+            const heightCm =
+                heightInch *
+                2.54;
+
+
+            return `
+                ${widthCm.toFixed(2)}
+                ×
+                ${heightCm.toFixed(2)}
+                cm
+                /
+                ${widthInch.toFixed(2)}
+                ×
+                ${heightInch.toFixed(2)}
+                inch
+            `;
+
+        }
+
+
+
+        /* =========================================
+           DOWNLOAD FILE NAME
+        ========================================= */
+
+        function createDownloadName() {
+
+            if (!originalFile) {
+
+                return "resized-image.jpg";
+
+            }
+
+
+            const originalName =
+                originalFile.name
+                    .replace(
+                        /\.[^/.]+$/,
+                        ""
+                    );
+
+
+            return (
+                originalName +
+                "-resized.jpg"
+            );
+
+        }
+
+
+
+        /* =========================================
+           FORMAT FILE SIZE
+        ========================================= */
+
+        function formatBytes(bytes) {
+
+            if (
+                !Number.isFinite(bytes)
+            ) {
+
+                return "0 B";
+
+            }
+
+
+            if (
+                bytes < 1024
+            ) {
+
+                return (
+                    bytes.toFixed(0) +
+                    " B"
+                );
+
+            }
+
+
+            if (
+                bytes <
+                1024 * 1024
+            ) {
+
+                return (
+                    (
+                        bytes /
+                        1024
+                    ).toFixed(2) +
+                    " KB"
+                );
+
+            }
+
+
+            if (
+                bytes <
+                1024 *
+                1024 *
+                1024
+            ) {
+
+                return (
+                    (
+                        bytes /
+                        1024 /
+                        1024
+                    ).toFixed(2) +
+                    " MB"
+                );
+
+            }
+
+
+            return (
+                (
+                    bytes /
+                    1024 /
+                    1024 /
+                    1024
+                ).toFixed(2) +
+                " GB"
+            );
+
+        }
+
+
+
+        /* =========================================
+           SHOW MESSAGE
+        ========================================= */
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+            messageBox.textContent =
+                text;
+
+
+            messageBox.className =
+                "message " +
+                type;
+
+
+            messageBox.style.display =
+                "block";
+
+        }
+
+
+
+        /* =========================================
+           CLEAR MESSAGE
+        ========================================= */
+
+        function clearMessage() {
+
+            messageBox.textContent =
+                "";
+
+
+            messageBox.style.display =
+                "none";
+
+
+            messageBox.className =
+                "message";
+
+        }
+
+
+
+        /* =========================================
+           HTML ESCAPE
+        ========================================= */
+
+        function escapeHtml(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value;
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /* =========================================
+           RESET EVERYTHING
+        ========================================= */
+
+        resetButton.addEventListener(
+            "click",
+            function () {
+
+                /*
+                    Revoke upload preview URL.
+                */
+
+                if (uploadPreviewUrl) {
+
+                    URL.revokeObjectURL(
+                        uploadPreviewUrl
+                    );
+
+                    uploadPreviewUrl =
+                        null;
+
+                }
+
+
+                /*
+                    Revoke result URL.
+                */
+
+                if (resultObjectUrl) {
+
+                    URL.revokeObjectURL(
+                        resultObjectUrl
+                    );
+
+                    resultObjectUrl =
+                        null;
+
+                }
+
+
+                /*
+                    Reset variables.
+                */
+
+                originalFile =
+                    null;
+
+                originalImage =
+                    null;
+
+                originalWidth =
+                    0;
+
+                originalHeight =
+                    0;
+
+
+                /*
+                    Reset file input.
+                */
+
+                fileInput.value =
+                    "";
+
+
+                /*
+                    Reset preview.
+                */
+
+                uploadPreviewImage.src =
+                    "";
+
+
+                uploadedImagePreview.style.display =
+                    "none";
+
+
+                uploadPlaceholder.style.display =
+                    "block";
+
+
+                uploadBox.classList.remove(
+                    "has-image"
+                );
+
+
+                /*
+                    Reset editor.
+                */
+
+                editor.style.display =
+                    "none";
+
+
+                result.style.display =
+                    "none";
+
+
+                /*
+                    Reset selected file.
+                */
+
+                selectedFile.style.display =
+                    "none";
+
+
+                selectedFile.innerHTML =
+                    "";
+
+
+                /*
+                    Reset previews.
+                */
+
+                originalPreview.src =
+                    "";
+
+                resultPreview.src =
+                    "";
+
+
+                originalStats.innerHTML =
+                    "";
+
+                resultStats.innerHTML =
+                    "";
+
+
+                /*
+                    Reset settings.
+                */
+
+                widthInput.value =
+                    "";
+
+                heightInput.value =
+                    "";
+
+                widthUnit.value =
+                    "px";
+
+                heightUnit.value =
+                    "px";
+
+                lockRatio.checked =
+                    true;
+
+                dpiInput.value =
+                    "96";
+
+                targetSizeInput.value =
+                    "";
+
+                sizeUnit.value =
+                    "KB";
+
+                qualityInput.value =
+                    "90";
+
+                qualityValue.textContent =
+                    "90%";
+
+
+                /*
+                    Clear messages.
+                */
+
+                clearMessage();
+
+            }
+        );
+
+
+
+        /* =========================================
+           CLEANUP WHEN PAGE CLOSES
+        ========================================= */
+
+        window.addEventListener(
+            "beforeunload",
+            function () {
+
+                if (uploadPreviewUrl) {
+
+                    URL.revokeObjectURL(
+                        uploadPreviewUrl
+                    );
+
+                }
+
+
+                if (resultObjectUrl) {
+
+                    URL.revokeObjectURL(
+                        resultObjectUrl
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

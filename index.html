@@ -1,34 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
-
-    <meta
-        name="google-site-verification"
-        content="w7lFmM1fDG4eBjZNw40sgaYC1MTVnGEYGACtTKKI2K0"
-    >
 
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
+    <!-- ================================
+         SEO
+    ================================= -->
+
+    <title>
+        Free Image Resizer & Compressor Online | ImageResizerHub
+    </title>
+
     <meta
         name="description"
-        content="Free online image resizer and compressor. Resize images by pixels, percentage, CM, MM or inch, change DPI and compress to KB or MB."
+        content="Resize and compress images online for free. Change image width, height, DPI and file size in KB or MB. Resize images in pixels, CM, MM and inches and download as JPEG."
     >
 
-    <title>ImageResizer - Resize & Compress Images Online</title>
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="https://imageresizerhub.github.io/"
+    >
+
+
+    <!-- ================================
+         GOOGLE SEARCH CONSOLE
+    ================================= -->
+
+    <meta
+        name="google-site-verification"
+        content="w7lFmM1fDG4eBjZNw40sgaYC1MTVnGEYGACtTKKI2K0"
+    >
+
+
+    <!-- ================================
+         OPEN GRAPH
+    ================================= -->
+
+    <meta
+        property="og:title"
+        content="Free Image Resizer & Compressor Online | ImageResizerHub"
+    >
+
+    <meta
+        property="og:description"
+        content="Resize images, change DPI and compress image size to KB or MB online for free."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://imageresizerhub.github.io/"
+    >
+
+    <meta
+        property="og:site_name"
+        content="ImageResizerHub"
+    >
+
+
+    <!-- ================================
+         TWITTER
+    ================================= -->
+
+    <meta
+        name="twitter:card"
+        content="summary"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Free Image Resizer & Compressor Online | ImageResizerHub"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Resize and compress images online for free."
+    >
+
+
+    <!-- ================================
+         FAVICON
+    ================================= -->
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>"
+    >
+
+
+    <!-- ================================
+         WEBSITE STRUCTURED DATA
+    ================================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ImageResizerHub",
+        "url": "https://imageresizerhub.github.io/",
+        "description": "Free online image resizer and compressor."
+    }
+    </script>
+
+
+    <!-- ================================
+         FAQ STRUCTURED DATA
+    ================================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is ImageResizerHub free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. ImageResizerHub provides a free online image resizing and compression tool."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I resize an image to 100 KB?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Enter 100 as the target size and select KB. The tool automatically adjusts JPEG quality to get as close as possible to the requested size."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I resize an image in CM, MM or Inch?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can select centimeters, millimeters or inches and use the selected DPI to calculate the corresponding pixel dimensions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I change image DPI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can enter a DPI such as 72, 96, 150 or 300."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the tool process images in the browser?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The current version performs image processing directly in the browser."
+                }
+            }
+        ]
+    }
+    </script>
+
+
+    <!-- ================================
+         CSS
+    ================================= -->
 
     <style>
 
-        /* =========================================
-           RESET
-        ========================================= */
-
         * {
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         html,
@@ -46,15 +202,16 @@
                 sans-serif;
 
             background: #f5f7fb;
+
             color: #172033;
 
             overflow-x: hidden;
         }
 
 
-        /* =========================================
+        /* ================================
            HEADER
-        ========================================= */
+        ================================= */
 
         header {
             width: 100%;
@@ -76,6 +233,7 @@
 
         .logo {
             font-size: 24px;
+
             font-weight: 800;
 
             color: #172033;
@@ -88,24 +246,24 @@
         }
 
 
-        /* =========================================
+        /* ================================
            MAIN
-        ========================================= */
+        ================================= */
 
         main {
             width: 100%;
+
             max-width: 1100px;
 
             margin: 35px auto;
 
-            padding:
-                0 18px;
+            padding: 0 18px;
         }
 
 
-        /* =========================================
+        /* ================================
            HERO
-        ========================================= */
+        ================================= */
 
         .hero {
             width: 100%;
@@ -116,8 +274,7 @@
         }
 
         .hero h1 {
-            margin:
-                0 0 12px;
+            margin: 0 0 12px;
 
             font-size: 40px;
 
@@ -137,12 +294,13 @@
         }
 
 
-        /* =========================================
+        /* ================================
            CARD
-        ========================================= */
+        ================================= */
 
         .card {
             width: 100%;
+
             max-width: 100%;
 
             margin-bottom: 22px;
@@ -161,36 +319,37 @@
         }
 
         .card h2 {
-            margin:
-                0 0 20px;
+            margin: 0 0 20px;
 
             font-size: 23px;
+
+            line-height: 1.3;
         }
 
 
-        /* =========================================
+        /* ================================
            FILE INPUT
-        ========================================= */
+        ================================= */
 
         #fileInput {
             display: none;
         }
 
 
-        /* =========================================
+        /* ================================
            UPLOAD BOX
-        ========================================= */
+        ================================= */
 
         .upload-box {
             position: relative;
 
             width: 100%;
+
             max-width: 100%;
 
             min-height: 260px;
 
-            padding:
-                35px 20px;
+            padding: 35px 20px;
 
             border:
                 2px dashed #b8bfd1;
@@ -232,14 +391,13 @@
 
             background: #efeeff;
 
-            transform:
-                scale(1.003);
+            transform: scale(1.003);
         }
 
 
-        /* =========================================
-           UPLOAD PLACEHOLDER
-        ========================================= */
+        /* ================================
+           PLACEHOLDER
+        ================================= */
 
         #uploadPlaceholder {
             width: 100%;
@@ -256,8 +414,7 @@
         }
 
         .upload-box h2 {
-            margin:
-                0 0 8px;
+            margin: 0 0 8px;
 
             font-size: 23px;
 
@@ -267,8 +424,7 @@
         .upload-box p {
             max-width: 100%;
 
-            margin:
-                5px 0;
+            margin: 5px 0;
 
             color: #667085;
 
@@ -276,8 +432,7 @@
 
             line-height: 1.5;
 
-            overflow-wrap:
-                anywhere;
+            overflow-wrap: anywhere;
         }
 
         .upload-button-text {
@@ -285,8 +440,7 @@
 
             margin-top: 14px;
 
-            padding:
-                10px 17px;
+            padding: 10px 17px;
 
             background: #4f46e5;
 
@@ -300,9 +454,9 @@
         }
 
 
-        /* =========================================
-           UPLOADED IMAGE PREVIEW
-        ========================================= */
+        /* ================================
+           SELECTED IMAGE PREVIEW
+        ================================= */
 
         .uploaded-image-preview {
             display: none;
@@ -326,6 +480,7 @@
             display: block;
 
             width: 100%;
+
             height: 100%;
 
             object-fit: contain;
@@ -337,11 +492,12 @@
             position: absolute;
 
             left: 0;
+
             right: 0;
+
             bottom: 0;
 
-            padding:
-                11px;
+            padding: 11px;
 
             background:
                 rgba(0, 0, 0, 0.65);
@@ -362,9 +518,9 @@
         }
 
 
-        /* =========================================
-           SELECTED FILE
-        ========================================= */
+        /* ================================
+           FILE INFORMATION
+        ================================= */
 
         .selected-file {
             display: none;
@@ -373,8 +529,7 @@
 
             margin-top: 14px;
 
-            padding:
-                12px 14px;
+            padding: 12px 14px;
 
             border-radius: 10px;
 
@@ -386,14 +541,13 @@
 
             line-height: 1.6;
 
-            overflow-wrap:
-                anywhere;
+            overflow-wrap: anywhere;
         }
 
 
-        /* =========================================
+        /* ================================
            CONTROLS
-        ========================================= */
+        ================================= */
 
         .controls {
             width: 100%;
@@ -422,8 +576,7 @@
         }
 
         .control-group.full {
-            grid-column:
-                1 / -1;
+            grid-column: 1 / -1;
         }
 
         label {
@@ -435,9 +588,9 @@
         }
 
 
-        /* =========================================
+        /* ================================
            INPUTS
-        ========================================= */
+        ================================= */
 
         input[type="number"],
         select {
@@ -447,8 +600,7 @@
 
             height: 46px;
 
-            padding:
-                0 12px;
+            padding: 0 12px;
 
             border:
                 1px solid #d0d5dd;
@@ -495,9 +647,9 @@
         }
 
 
-        /* =========================================
+        /* ================================
            RANGE
-        ========================================= */
+        ================================= */
 
         input[type="range"] {
             width: 100%;
@@ -516,9 +668,9 @@
         }
 
 
-        /* =========================================
+        /* ================================
            CHECKBOX
-        ========================================= */
+        ================================= */
 
         .checkbox-container {
             display: flex;
@@ -532,6 +684,7 @@
 
         .checkbox-container input {
             width: 17px;
+
             height: 17px;
 
             margin: 0;
@@ -550,15 +703,14 @@
         }
 
 
-        /* =========================================
+        /* ================================
            INFO BOX
-        ========================================= */
+        ================================= */
 
         .info-box {
             margin-top: 18px;
 
-            padding:
-                14px 15px;
+            padding: 14px 15px;
 
             background: #f3f4ff;
 
@@ -572,9 +724,9 @@
         }
 
 
-        /* =========================================
-           ACTIONS
-        ========================================= */
+        /* ================================
+           BUTTONS
+        ================================= */
 
         .actions {
             width: 100%;
@@ -592,8 +744,7 @@
         .download-button {
             min-height: 46px;
 
-            padding:
-                12px 20px;
+            padding: 12px 20px;
 
             border: none;
 
@@ -620,8 +771,7 @@
 
         button:hover,
         .download-button:hover {
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
 
         button:disabled {
@@ -653,17 +803,16 @@
         }
 
 
-        /* =========================================
+        /* ================================
            MESSAGE
-        ========================================= */
+        ================================= */
 
         .message {
             display: none;
 
             margin-top: 18px;
 
-            padding:
-                13px 15px;
+            padding: 13px 15px;
 
             border-radius: 10px;
 
@@ -685,9 +834,9 @@
         }
 
 
-        /* =========================================
+        /* ================================
            RESULT
-        ========================================= */
+        ================================= */
 
         .result {
             display: none;
@@ -782,8 +931,7 @@
 
             line-height: 1.8;
 
-            overflow-wrap:
-                anywhere;
+            overflow-wrap: anywhere;
         }
 
         .download-area {
@@ -793,9 +941,53 @@
         }
 
 
-        /* =========================================
+        /* ================================
+           SEO CONTENT
+        ================================= */
+
+        .seo-content {
+            width: 100%;
+        }
+
+        .seo-content .card {
+            line-height: 1.75;
+        }
+
+        .seo-content h2 {
+            margin:
+                28px 0 10px;
+
+            color: #111827;
+
+            font-size: 24px;
+        }
+
+        .seo-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .seo-content h3 {
+            margin:
+                22px 0 7px;
+
+            color: #344054;
+
+            font-size: 18px;
+        }
+
+        .seo-content p {
+            margin:
+                0 0 16px;
+
+            color: #667085;
+
+            font-size: 15px;
+        }
+
+
+        /* ================================
            FOOTER
-        ========================================= */
+        ================================= */
 
         footer {
             width: 100%;
@@ -809,12 +1001,14 @@
             color: #667085;
 
             font-size: 14px;
+
+            line-height: 1.7;
         }
 
 
-        /* =========================================
+        /* ================================
            TABLET
-        ========================================= */
+        ================================= */
 
         @media (max-width: 800px) {
 
@@ -823,8 +1017,7 @@
             }
 
             .controls {
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
             .control-group.full {
@@ -832,16 +1025,15 @@
             }
 
             .preview-grid {
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
         }
 
 
-        /* =========================================
+        /* ================================
            MOBILE
-        ========================================= */
+        ================================= */
 
         @media (max-width: 600px) {
 
@@ -854,8 +1046,7 @@
             }
 
             main {
-                margin:
-                    22px auto;
+                margin: 22px auto;
 
                 padding:
                     0 12px;
@@ -917,12 +1108,20 @@
                 width: 100%;
             }
 
+            .seo-content h2 {
+                font-size: 21px;
+            }
+
+            .seo-content h3 {
+                font-size: 17px;
+            }
+
         }
 
 
-        /* =========================================
-           EXTRA SMALL MOBILE
-        ========================================= */
+        /* ================================
+           SMALL MOBILE
+        ================================= */
 
         @media (max-width: 400px) {
 
@@ -931,8 +1130,7 @@
             }
 
             .input-row {
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
             .upload-box {
@@ -954,22 +1152,23 @@
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================================
+    <!-- ================================
          HEADER
-    ========================================== -->
+    ================================= -->
 
     <header>
 
         <div class="header-inner">
 
             <div class="logo">
-                <span>Image</span>Resizer
+                <span>Image</span>ResizerHub
             </div>
 
         </div>
@@ -978,16 +1177,14 @@
 
 
 
-    <!-- =========================================
+    <!-- ================================
          MAIN
-    ========================================== -->
+    ================================= -->
 
     <main>
 
 
-        <!-- =====================================
-             HERO
-        ====================================== -->
+        <!-- HERO -->
 
         <section class="hero">
 
@@ -996,22 +1193,19 @@
             </h1>
 
             <p>
-                Change dimensions, DPI and file size.
-                Export your image as JPEG.
+                Change image dimensions, DPI and file size.
+                Convert your image to JPEG for free.
             </p>
 
         </section>
 
 
 
-        <!-- =====================================
+        <!-- ================================
              UPLOAD CARD
-        ====================================== -->
+        ================================= -->
 
         <div class="card">
-
-
-            <!-- HIDDEN FILE INPUT -->
 
             <input
                 type="file"
@@ -1020,8 +1214,6 @@
             >
 
 
-            <!-- UPLOAD / DROP AREA -->
-
             <label
                 for="fileInput"
                 class="upload-box"
@@ -1029,11 +1221,9 @@
             >
 
 
-                <!-- BEFORE IMAGE SELECTED -->
+                <!-- BEFORE UPLOAD -->
 
-                <div
-                    id="uploadPlaceholder"
-                >
+                <div id="uploadPlaceholder">
 
                     <div class="file-icon">
                         🖼️
@@ -1049,7 +1239,7 @@
 
                     <p>
                         JPG, PNG, WEBP, GIF, BMP and other
-                        browser-supported image formats
+                        browser-supported formats
                     </p>
 
                     <span
@@ -1062,7 +1252,7 @@
 
 
 
-                <!-- AFTER IMAGE SELECTED -->
+                <!-- AFTER UPLOAD -->
 
                 <div
                     id="uploadedImagePreview"
@@ -1083,26 +1273,21 @@
 
                 </div>
 
-
             </label>
 
-
-
-            <!-- FILE INFORMATION -->
 
             <div
                 class="selected-file"
                 id="selectedFile"
             ></div>
 
-
         </div>
 
 
 
-        <!-- =====================================
+        <!-- ================================
              EDITOR
-        ====================================== -->
+        ================================= -->
 
         <div
             class="card"
@@ -1216,7 +1401,7 @@
 
 
 
-                <!-- ASPECT RATIO -->
+                <!-- LOCK RATIO -->
 
                 <div class="control-group full">
 
@@ -1260,8 +1445,8 @@
                     >
 
                     <div class="range-info">
-                        Recommended:
-                        72, 96, 150 or 300 DPI
+                        Common values:
+                        72, 96, 150 and 300 DPI
                     </div>
 
                 </div>
@@ -1303,7 +1488,8 @@
                     </div>
 
                     <div class="range-info">
-                        Leave empty to use JPEG quality.
+                        Example:
+                        50 KB, 100 KB, 200 KB, 1 MB
                     </div>
 
                 </div>
@@ -1359,38 +1545,33 @@
 
 
 
-            <!-- INFORMATION -->
+            <!-- INFO -->
 
             <div class="info-box">
 
                 <strong>
-                    How units work:
+                    How this works:
                 </strong>
 
                 <br>
 
-                Pixels =
-                direct pixel dimensions.
+                Pixels directly control output dimensions.
 
                 <br>
 
-                Percent =
-                percentage of the original image.
+                CM, MM and Inch are converted to pixels
+                using the selected DPI.
 
                 <br>
 
-                CM / MM / Inch =
-                converted to pixels using the selected DPI.
-
-                <br>
-
-                The final image is exported as JPEG.
-
-                <br>
-
-                Target file size automatically adjusts
+                Target KB/MB automatically adjusts
                 JPEG quality to get as close as possible
                 to the requested size.
+
+                <br>
+
+                Image processing is performed directly
+                in your browser.
 
             </div>
 
@@ -1431,9 +1612,9 @@
 
 
 
-        <!-- =====================================
+        <!-- ================================
              RESULT
-        ====================================== -->
+        ================================= -->
 
         <div
             class="card result"
@@ -1448,7 +1629,7 @@
             <div class="preview-grid">
 
 
-                <!-- ORIGINAL IMAGE -->
+                <!-- ORIGINAL -->
 
                 <div class="preview-box">
 
@@ -1459,7 +1640,7 @@
                     <img
                         id="originalPreview"
                         class="preview-image"
-                        alt="Original image preview"
+                        alt="Original uploaded image"
                     >
 
                     <div
@@ -1471,7 +1652,7 @@
 
 
 
-                <!-- RESIZED IMAGE -->
+                <!-- RESULT -->
 
                 <div class="preview-box">
 
@@ -1482,7 +1663,7 @@
                     <img
                         id="resultPreview"
                         class="preview-image"
-                        alt="Resized image preview"
+                        alt="Resized JPEG image"
                     >
 
                     <div
@@ -1512,29 +1693,190 @@
 
         </div>
 
+
+
+        <!-- ================================
+             SEO CONTENT
+        ================================= -->
+
+        <section class="seo-content">
+
+            <div class="card">
+
+
+                <h2>
+                    Free Online Image Resizer
+                </h2>
+
+                <p>
+                    ImageResizerHub is a free online image resizer
+                    and compressor that allows you to resize images
+                    without installing software. You can change
+                    width, height, DPI and file size directly
+                    in your browser.
+                </p>
+
+
+                <h2>
+                    Resize Image by Pixels
+                </h2>
+
+                <p>
+                    Enter the required width and height in pixels
+                    to resize an image to exact dimensions. This
+                    can be useful for profile pictures, websites,
+                    online forms, documents and other image
+                    requirements.
+                </p>
+
+
+                <h2>
+                    Resize Image in CM, MM and Inch
+                </h2>
+
+                <p>
+                    Resize images using centimeters, millimeters
+                    or inches. Select the required DPI and enter
+                    the physical dimensions you need. The tool
+                    calculates the corresponding pixel dimensions.
+                </p>
+
+
+                <h2>
+                    Compress Image to KB or MB
+                </h2>
+
+                <p>
+                    Reduce image file size by entering a target
+                    size such as 50 KB, 100 KB, 200 KB, 500 KB
+                    or 1 MB. JPEG quality is automatically adjusted
+                    to get as close as possible to the requested
+                    file size.
+                </p>
+
+
+                <h2>
+                    Change Image DPI
+                </h2>
+
+                <p>
+                    Change image DPI for printing and document
+                    requirements. You can enter DPI values such
+                    as 72, 96, 150 or 300.
+                </p>
+
+
+                <h2>
+                    Convert Image to JPEG
+                </h2>
+
+                <p>
+                    Upload an image and download the resized
+                    result as a JPEG file. Transparent images are
+                    placed on a white background during JPEG
+                    conversion.
+                </p>
+
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+
+                <h3>
+                    Is ImageResizerHub free?
+                </h3>
+
+                <p>
+                    Yes. The basic image resizing and compression
+                    functionality is free to use.
+                </p>
+
+
+                <h3>
+                    Can I resize an image to 100 KB?
+                </h3>
+
+                <p>
+                    Yes. Enter 100 in the Target File Size field
+                    and select KB. The tool will adjust JPEG
+                    quality to get as close as possible to the
+                    requested size.
+                </p>
+
+
+                <h3>
+                    Can I resize an image to 200 KB?
+                </h3>
+
+                <p>
+                    Yes. Enter 200 as the target file size and
+                    select KB.
+                </p>
+
+
+                <h3>
+                    Can I resize an image in centimeters?
+                </h3>
+
+                <p>
+                    Yes. Select Centimeters for width and height
+                    and enter your desired physical dimensions.
+                    The selected DPI is used for pixel conversion.
+                </p>
+
+
+                <h3>
+                    Can I change image DPI?
+                </h3>
+
+                <p>
+                    Yes. Enter your required DPI value in the
+                    DPI field.
+                </p>
+
+
+                <h3>
+                    Is my image uploaded to a server?
+                </h3>
+
+                <p>
+                    The current version performs the resizing and
+                    JPEG conversion directly in the browser.
+                </p>
+
+            </div>
+
+        </section>
+
+
     </main>
 
 
 
-    <!-- =========================================
+    <!-- ================================
          FOOTER
-    ========================================== -->
+    ================================= -->
 
     <footer>
 
-        ImageResizer —
-        Free Online Image Resizing Tool
+        © 2026 ImageResizerHub.
+        Free online image resizing and compression tool.
 
     </footer>
 
 
 
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
     <script>
 
 
-        /* =========================================
+        /* =================================
            GLOBAL VARIABLES
-        ========================================= */
+        ================================= */
 
         let originalFile = null;
 
@@ -1549,10 +1891,9 @@
         let resultObjectUrl = null;
 
 
-
-        /* =========================================
-           ELEMENTS
-        ========================================= */
+        /* =================================
+           ELEMENT REFERENCES
+        ================================= */
 
         const fileInput =
             document.getElementById(
@@ -1685,27 +2026,24 @@
             );
 
 
-
-        /* =========================================
-           QUALITY DISPLAY
-        ========================================= */
+        /* =================================
+           QUALITY LABEL
+        ================================= */
 
         qualityInput.addEventListener(
             "input",
             function () {
 
                 qualityValue.textContent =
-                    qualityInput.value +
-                    "%";
+                    qualityInput.value + "%";
 
             }
         );
 
 
-
-        /* =========================================
+        /* =================================
            FILE INPUT
-        ========================================= */
+        ================================= */
 
         fileInput.addEventListener(
             "change",
@@ -1725,10 +2063,9 @@
         );
 
 
-
-        /* =========================================
+        /* =================================
            DRAG ENTER
-        ========================================= */
+        ================================= */
 
         uploadBox.addEventListener(
             "dragenter",
@@ -1746,10 +2083,9 @@
         );
 
 
-
-        /* =========================================
+        /* =================================
            DRAG OVER
-        ========================================= */
+        ================================= */
 
         uploadBox.addEventListener(
             "dragover",
@@ -1767,10 +2103,9 @@
         );
 
 
-
-        /* =========================================
+        /* =================================
            DRAG LEAVE
-        ========================================= */
+        ================================= */
 
         uploadBox.addEventListener(
             "dragleave",
@@ -1779,12 +2114,6 @@
                 event.preventDefault();
 
                 event.stopPropagation();
-
-                /*
-                    Only remove the highlight when
-                    the pointer actually leaves the
-                    upload box.
-                */
 
                 const rect =
                     uploadBox.getBoundingClientRect();
@@ -1813,10 +2142,9 @@
         );
 
 
-
-        /* =========================================
+        /* =================================
            DROP
-        ========================================= */
+        ================================= */
 
         uploadBox.addEventListener(
             "drop",
@@ -1830,16 +2158,21 @@
                     "drag-over"
                 );
 
+
                 const files =
                     event.dataTransfer &&
                     event.dataTransfer.files;
+
 
                 if (
                     !files ||
                     files.length === 0
                 ) {
+
                     return;
+
                 }
+
 
                 loadImageFile(
                     files[0]
@@ -1849,10 +2182,41 @@
         );
 
 
+        /* =================================
+           PREVENT OUTSIDE DROP
+        ================================= */
 
-        /* =========================================
-           LOAD IMAGE FILE
-        ========================================= */
+        document.addEventListener(
+            "dragover",
+            function (event) {
+
+                event.preventDefault();
+
+            }
+        );
+
+
+        document.addEventListener(
+            "drop",
+            function (event) {
+
+                if (
+                    !uploadBox.contains(
+                        event.target
+                    )
+                ) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+        );
+
+
+        /* =================================
+           LOAD IMAGE
+        ================================= */
 
         function loadImageFile(file) {
 
@@ -1873,10 +2237,12 @@
 
 
             /*
-                Cancel old preview URL.
+                Remove old upload preview URL.
             */
 
-            if (uploadPreviewUrl) {
+            if (
+                uploadPreviewUrl
+            ) {
 
                 URL.revokeObjectURL(
                     uploadPreviewUrl
@@ -1889,10 +2255,12 @@
 
 
             /*
-                Cancel old result URL.
+                Remove old result URL.
             */
 
-            if (resultObjectUrl) {
+            if (
+                resultObjectUrl
+            ) {
 
                 URL.revokeObjectURL(
                     resultObjectUrl
@@ -1915,35 +2283,33 @@
 
 
             /*
-                Show selected image
-                INSIDE the upload box.
+                Show image inside
+                upload box.
             */
 
             uploadPreviewImage.src =
                 uploadPreviewUrl;
 
+
             uploadedImagePreview.style.display =
                 "block";
 
+
             uploadPlaceholder.style.display =
                 "none";
+
 
             uploadBox.classList.add(
                 "has-image"
             );
 
 
-            /*
-                Hide old result.
-            */
-
             result.style.display =
                 "none";
 
 
             /*
-                Load image into JavaScript
-                for processing.
+                Load image.
             */
 
             const image =
@@ -1965,10 +2331,6 @@
                         image.naturalHeight;
 
 
-                    /*
-                        Set default dimensions.
-                    */
-
                     widthInput.value =
                         originalWidth;
 
@@ -1985,25 +2347,13 @@
                         "px";
 
 
-                    /*
-                        Show editor.
-                    */
-
                     editor.style.display =
                         "block";
 
 
-                    /*
-                        Original result preview.
-                    */
-
                     originalPreview.src =
                         uploadPreviewUrl;
 
-
-                    /*
-                        File details.
-                    */
 
                     selectedFile.style.display =
                         "block";
@@ -2012,12 +2362,16 @@
                     selectedFile.innerHTML =
                         `
                         <strong>Selected:</strong>
-                        ${escapeHtml(file.name)}
+                        ${escapeHtml(
+                            file.name
+                        )}
 
                         <br>
 
-                        <strong>Size:</strong>
-                        ${formatBytes(file.size)}
+                        <strong>Original size:</strong>
+                        ${formatBytes(
+                            file.size
+                        )}
 
                         <br>
 
@@ -2038,7 +2392,9 @@
                         <br>
 
                         <strong>File size:</strong>
-                        ${formatBytes(file.size)}
+                        ${formatBytes(
+                            file.size
+                        )}
 
                         <br>
 
@@ -2074,14 +2430,15 @@
         }
 
 
-
-        /* =========================================
+        /* =================================
            RESET UPLOAD PREVIEW
-        ========================================= */
+        ================================= */
 
         function resetUploadPreview() {
 
-            if (uploadPreviewUrl) {
+            if (
+                uploadPreviewUrl
+            ) {
 
                 URL.revokeObjectURL(
                     uploadPreviewUrl
@@ -2112,10 +2469,9 @@
         }
 
 
-
-        /* =========================================
+        /* =================================
            ASPECT RATIO
-        ========================================= */
+        ================================= */
 
         let changingWidth = false;
 
@@ -2188,7 +2544,6 @@
         );
 
 
-
         heightInput.addEventListener(
             "input",
             function () {
@@ -2255,10 +2610,9 @@
         );
 
 
-
-        /* =========================================
-           UNIT CONVERSION
-        ========================================= */
+        /* =================================
+           UNIT TO PIXELS
+        ================================= */
 
         function inputValueToPixels(
             value,
@@ -2295,14 +2649,18 @@
             }
 
 
-            if (unit === "px") {
+            if (
+                unit === "px"
+            ) {
 
                 return number;
 
             }
 
 
-            if (unit === "percent") {
+            if (
+                unit === "percent"
+            ) {
 
                 if (
                     dimension === "width"
@@ -2326,7 +2684,9 @@
             }
 
 
-            if (unit === "in") {
+            if (
+                unit === "in"
+            ) {
 
                 return (
                     number *
@@ -2336,7 +2696,9 @@
             }
 
 
-            if (unit === "cm") {
+            if (
+                unit === "cm"
+            ) {
 
                 return (
                     number /
@@ -2347,7 +2709,9 @@
             }
 
 
-            if (unit === "mm") {
+            if (
+                unit === "mm"
+            ) {
 
                 return (
                     number /
@@ -2363,6 +2727,9 @@
         }
 
 
+        /* =================================
+           PIXELS TO UNIT
+        ================================= */
 
         function pixelsToInputValue(
             pixels,
@@ -2395,7 +2762,9 @@
             }
 
 
-            if (unit === "px") {
+            if (
+                unit === "px"
+            ) {
 
                 return Math.round(
                     pixels
@@ -2404,7 +2773,9 @@
             }
 
 
-            if (unit === "percent") {
+            if (
+                unit === "percent"
+            ) {
 
                 const original =
                     dimension === "width"
@@ -2423,7 +2794,9 @@
             }
 
 
-            if (unit === "in") {
+            if (
+                unit === "in"
+            ) {
 
                 return Number(
                     (
@@ -2435,7 +2808,9 @@
             }
 
 
-            if (unit === "cm") {
+            if (
+                unit === "cm"
+            ) {
 
                 return Number(
                     (
@@ -2448,7 +2823,9 @@
             }
 
 
-            if (unit === "mm") {
+            if (
+                unit === "mm"
+            ) {
 
                 return Number(
                     (
@@ -2468,10 +2845,9 @@
         }
 
 
-
-        /* =========================================
-           GET FINAL DIMENSIONS
-        ========================================= */
+        /* =================================
+           FINAL DIMENSIONS
+        ================================= */
 
         function getFinalDimensions() {
 
@@ -2544,10 +2920,9 @@
         }
 
 
-
-        /* =========================================
-           TARGET FILE SIZE
-        ========================================= */
+        /* =================================
+           TARGET BYTES
+        ================================= */
 
         function getTargetBytes() {
 
@@ -2599,10 +2974,9 @@
         }
 
 
-
-        /* =========================================
-           RESIZE IMAGE
-        ========================================= */
+        /* =================================
+           RESIZE
+        ================================= */
 
         resizeButton.addEventListener(
             "click",
@@ -2655,14 +3029,14 @@
                         canvas.getContext(
                             "2d",
                             {
-                                alpha: false
+                                alpha:
+                                    false
                             }
                         );
 
 
                     /*
-                        White background for
-                        transparent images.
+                        White background.
                     */
 
                     context.fillStyle =
@@ -2678,7 +3052,7 @@
 
 
                     /*
-                        High-quality image smoothing.
+                        High-quality scaling.
                     */
 
                     context.imageSmoothingEnabled =
@@ -2688,10 +3062,6 @@
                     context.imageSmoothingQuality =
                         "high";
 
-
-                    /*
-                        Draw image.
-                    */
 
                     context.drawImage(
                         originalImage,
@@ -2709,7 +3079,9 @@
                     let blob;
 
 
-                    if (targetBytes) {
+                    if (
+                        targetBytes
+                    ) {
 
                         blob =
                             await findBlobNearTarget(
@@ -2717,7 +3089,8 @@
                                 targetBytes
                             );
 
-                    } else {
+                    }
+                    else {
 
                         const quality =
                             Number(
@@ -2735,7 +3108,9 @@
 
 
                     /*
-                        Add DPI metadata.
+                        Set DPI metadata
+                        when supported by
+                        the generated JPEG.
                     */
 
                     blob =
@@ -2761,7 +3136,9 @@
                 }
                 catch (error) {
 
-                    console.error(error);
+                    console.error(
+                        error
+                    );
 
 
                     showMessage(
@@ -2786,10 +3163,9 @@
         );
 
 
-
-        /* =========================================
+        /* =================================
            CANVAS TO JPEG
-        ========================================= */
+        ================================= */
 
         function canvasToJpegBlob(
             canvas,
@@ -2818,7 +3194,9 @@
                             }
 
 
-                            resolve(blob);
+                            resolve(
+                                blob
+                            );
 
                         },
 
@@ -2834,10 +3212,9 @@
         }
 
 
-
-        /* =========================================
-           FIND JPEG CLOSE TO TARGET SIZE
-        ========================================= */
+        /* =================================
+           FIND TARGET SIZE
+        ================================= */
 
         async function findBlobNearTarget(
             canvas,
@@ -2859,10 +3236,6 @@
             let bestDifference =
                 Infinity;
 
-
-            /*
-                Binary search.
-            */
 
             for (
                 let i = 0;
@@ -2926,7 +3299,7 @@
 
 
             /*
-                Check minimum quality.
+                Lowest quality.
             */
 
             const minBlob =
@@ -2951,7 +3324,7 @@
 
 
             /*
-                Check maximum quality.
+                Highest quality.
             */
 
             const maxBlob =
@@ -2980,10 +3353,9 @@
         }
 
 
-
-        /* =========================================
+        /* =================================
            SET JPEG DPI
-        ========================================= */
+        ================================= */
 
         async function setJpegDpi(
             blob,
@@ -2999,10 +3371,6 @@
                     buffer
                 );
 
-
-            /*
-                JPEG starts with FF D8.
-            */
 
             if (
                 bytes.length < 20 ||
@@ -3040,7 +3408,7 @@
 
 
                 /*
-                    APP0 JFIF
+                    APP0 / JFIF
                 */
 
                 if (
@@ -3061,7 +3429,7 @@
 
 
                     /*
-                        Check JFIF identifier.
+                        JFIF identifier.
                     */
 
                     if (
@@ -3087,8 +3455,7 @@
                     ) {
 
                         /*
-                            Unit:
-                            1 = DPI
+                            Unit 1 = DPI
                         */
 
                         bytes[
@@ -3107,7 +3474,7 @@
 
 
                         /*
-                            X density.
+                            X density
                         */
 
                         bytes[
@@ -3127,7 +3494,7 @@
 
 
                         /*
-                            Y density.
+                            Y density
                         */
 
                         bytes[
@@ -3168,7 +3535,7 @@
 
 
                 /*
-                    Start of Scan.
+                    Start Of Scan
                 */
 
                 if (
@@ -3181,8 +3548,7 @@
 
 
                 /*
-                    Markers without
-                    segment lengths.
+                    Markers without lengths.
                 */
 
                 if (
@@ -3238,32 +3604,23 @@
             }
 
 
-            /*
-                If no JFIF segment
-                is found, return
-                the original JPEG.
-            */
-
             return blob;
 
         }
 
 
-
-        /* =========================================
+        /* =================================
            SHOW RESULT
-        ========================================= */
+        ================================= */
 
         function showResult(
             blob,
             dimensions
         ) {
 
-            /*
-                Remove previous result URL.
-            */
-
-            if (resultObjectUrl) {
+            if (
+                resultObjectUrl
+            ) {
 
                 URL.revokeObjectURL(
                     resultObjectUrl
@@ -3286,10 +3643,6 @@
                 "block";
 
 
-            /*
-                Target information.
-            */
-
             const targetBytes =
                 getTargetBytes();
 
@@ -3298,7 +3651,9 @@
                 "";
 
 
-            if (targetBytes) {
+            if (
+                targetBytes
+            ) {
 
                 const difference =
                     blob.size -
@@ -3320,7 +3675,9 @@
                     <br>
 
                     <strong>Target:</strong>
-                    ${formatBytes(targetBytes)}
+                    ${formatBytes(
+                        targetBytes
+                    )}
 
                     <br>
 
@@ -3330,6 +3687,7 @@
                             difference
                         )
                     )}
+
                     (${percentage.toFixed(1)}%)
                     `;
 
@@ -3349,13 +3707,17 @@
                 ${formatPhysicalSize(
                     dimensions.width,
                     dimensions.height,
-                    Number(dpiInput.value)
+                    Number(
+                        dpiInput.value
+                    )
                 )}
 
                 <br>
 
                 <strong>File size:</strong>
-                ${formatBytes(blob.size)}
+                ${formatBytes(
+                    blob.size
+                )}
 
                 ${targetText}
 
@@ -3373,10 +3735,6 @@
                 `;
 
 
-            /*
-                Download link.
-            */
-
             downloadBtn.href =
                 resultObjectUrl;
 
@@ -3385,22 +3743,20 @@
                 createDownloadName();
 
 
-            /*
-                Scroll to result.
-            */
-
             result.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
             });
 
         }
 
 
-
-        /* =========================================
+        /* =================================
            PHYSICAL SIZE
-        ========================================= */
+        ================================= */
 
         function formatPhysicalSize(
             width,
@@ -3453,10 +3809,9 @@
         }
 
 
-
-        /* =========================================
-           DOWNLOAD FILE NAME
-        ========================================= */
+        /* =================================
+           DOWNLOAD NAME
+        ================================= */
 
         function createDownloadName() {
 
@@ -3468,11 +3823,10 @@
 
 
             const originalName =
-                originalFile.name
-                    .replace(
-                        /\.[^/.]+$/,
-                        ""
-                    );
+                originalFile.name.replace(
+                    /\.[^/.]+$/,
+                    ""
+                );
 
 
             return (
@@ -3483,12 +3837,13 @@
         }
 
 
+        /* =================================
+           FORMAT BYTES
+        ================================= */
 
-        /* =========================================
-           FORMAT FILE SIZE
-        ========================================= */
-
-        function formatBytes(bytes) {
+        function formatBytes(
+            bytes
+        ) {
 
             if (
                 !Number.isFinite(bytes)
@@ -3559,10 +3914,9 @@
         }
 
 
-
-        /* =========================================
-           SHOW MESSAGE
-        ========================================= */
+        /* =================================
+           MESSAGE
+        ================================= */
 
         function showMessage(
             text,
@@ -3584,10 +3938,9 @@
         }
 
 
-
-        /* =========================================
+        /* =================================
            CLEAR MESSAGE
-        ========================================= */
+        ================================= */
 
         function clearMessage() {
 
@@ -3605,10 +3958,9 @@
         }
 
 
-
-        /* =========================================
-           HTML ESCAPE
-        ========================================= */
+        /* =================================
+           ESCAPE HTML
+        ================================= */
 
         function escapeHtml(
             value
@@ -3629,20 +3981,21 @@
         }
 
 
-
-        /* =========================================
-           RESET EVERYTHING
-        ========================================= */
+        /* =================================
+           RESET BUTTON
+        ================================= */
 
         resetButton.addEventListener(
             "click",
             function () {
 
                 /*
-                    Revoke upload preview URL.
+                    Upload preview.
                 */
 
-                if (uploadPreviewUrl) {
+                if (
+                    uploadPreviewUrl
+                ) {
 
                     URL.revokeObjectURL(
                         uploadPreviewUrl
@@ -3655,10 +4008,12 @@
 
 
                 /*
-                    Revoke result URL.
+                    Result preview.
                 */
 
-                if (resultObjectUrl) {
+                if (
+                    resultObjectUrl
+                ) {
 
                     URL.revokeObjectURL(
                         resultObjectUrl
@@ -3671,7 +4026,7 @@
 
 
                 /*
-                    Reset variables.
+                    Variables.
                 */
 
                 originalFile =
@@ -3688,7 +4043,7 @@
 
 
                 /*
-                    Reset file input.
+                    Reset input.
                 */
 
                 fileInput.value =
@@ -3696,7 +4051,7 @@
 
 
                 /*
-                    Reset preview.
+                    Reset upload preview.
                 */
 
                 uploadPreviewImage.src =
@@ -3717,7 +4072,7 @@
 
 
                 /*
-                    Reset editor.
+                    Hide editor/result.
                 */
 
                 editor.style.display =
@@ -3729,7 +4084,7 @@
 
 
                 /*
-                    Reset selected file.
+                    Reset file information.
                 */
 
                 selectedFile.style.display =
@@ -3793,26 +4148,23 @@
                     "90%";
 
 
-                /*
-                    Clear messages.
-                */
-
                 clearMessage();
 
             }
         );
 
 
-
-        /* =========================================
-           CLEANUP WHEN PAGE CLOSES
-        ========================================= */
+        /* =================================
+           CLEANUP
+        ================================= */
 
         window.addEventListener(
             "beforeunload",
             function () {
 
-                if (uploadPreviewUrl) {
+                if (
+                    uploadPreviewUrl
+                ) {
 
                     URL.revokeObjectURL(
                         uploadPreviewUrl
@@ -3821,7 +4173,9 @@
                 }
 
 
-                if (resultObjectUrl) {
+                if (
+                    resultObjectUrl
+                ) {
 
                     URL.revokeObjectURL(
                         resultObjectUrl
@@ -3835,4 +4189,5 @@
     </script>
 
 </body>
+
 </html>
